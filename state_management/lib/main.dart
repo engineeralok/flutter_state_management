@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:state_management/home_screen.dart';
 import 'package:state_management/statefull_widget_screen.dart';
 
 void main() {
