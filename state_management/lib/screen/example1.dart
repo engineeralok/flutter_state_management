@@ -18,7 +18,7 @@ class _ExampleOneState extends State<ExampleOne> {
     // final value = provider.value;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Example One"),
+        title: const Text("Example One"),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -47,7 +47,7 @@ class _ExampleOneState extends State<ExampleOne> {
                       decoration: BoxDecoration(
                         color: Colors.green.withOpacity(values),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text("Container 1"),
                       ),
                     ),
@@ -58,7 +58,7 @@ class _ExampleOneState extends State<ExampleOne> {
                       decoration: BoxDecoration(
                         color: Colors.red.withOpacity(values),
                       ),
-                      child: Center(
+                      child: const Center(
                         child: Text("Container 2"),
                       ),
                     ),

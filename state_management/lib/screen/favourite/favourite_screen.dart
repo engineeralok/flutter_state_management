@@ -26,12 +26,12 @@ class _FavouriteScreenState extends State<FavouriteScreen> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MyFavouriteItems(),
+                    builder: (context) => const MyFavouriteItems(),
                   ));
             },
-            child: Icon(Icons.favorite),
+            child: const Icon(Icons.favorite),
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           )
         ],

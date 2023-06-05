@@ -2,11 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:state_management/provider/count_provider.dart';
 import 'package:state_management/provider/example1_provider.dart';
 import 'package:state_management/provider/favourite_provider.dart';
-import 'package:state_management/screen/count_example.dart';
-import 'package:state_management/screen/example1.dart';
-import 'package:state_management/screen/favourite/favourite_screen.dart';
-import 'package:state_management/statefull_widget_screen.dart';
-import 'package:state_management/why_provider.dart';
+import 'package:state_management/provider/them_changer_provider.dart';
+import 'package:state_management/screen/dark_theme.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -20,18 +17,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => CountProvider()),
-        ChangeNotifierProvider(create: (_) => ExampleOneProvider()),
-        ChangeNotifierProvider(create: (_) => FavouriteItemProvider()),
-      ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: const FavouriteScreen(),
-      ),
-    );
+        providers: [
+          ChangeNotifierProvider(create: (_) => CountProvider()),
+          ChangeNotifierProvider(create: (_) => ExampleOneProvider()),
+          ChangeNotifierProvider(create: (_) => FavouriteItemProvider()),
+          ChangeNotifierProvider(create: (_) => ThemeChangerProvider()),
+        ],
+        child: Builder(
+          builder: (BuildContext context) {
+            final themeChanger = Provider.of<ThemeChangerProvider>(context);
+            return MaterialApp(
+              title: 'Flutter Demo',
+              themeMode: themeChanger.themeMode,
+              theme: ThemeData(
+
+                primarySwatch: Colors.blue,
+              ),
+              darkTheme: ThemeData(brightness: Brightness.dark),
+              home: const DarkThemeScreen(),
+            );
+          },
+        ));
   }
 }

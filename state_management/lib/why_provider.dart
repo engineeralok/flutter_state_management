@@ -25,7 +25,7 @@ class _WhyProviderScreenState extends State<WhyProviderScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print("build" + count.toString());
+    print("build$count");
     return Scaffold(
       appBar: AppBar(
         title: const Text('Provider'),
@@ -37,12 +37,8 @@ class _WhyProviderScreenState extends State<WhyProviderScreen> {
         children: [
           Center(
             child: Text(
-              DateTime.now().hour.toString() +
-                  ':' +
-                  DateTime.now().minute.toString() +
-                  ':' +
-                  DateTime.now().second.toString(),
-              style: TextStyle(fontSize: 50),
+              '${DateTime.now().hour}:${DateTime.now().minute}:${DateTime.now().second}',
+              style: const TextStyle(fontSize: 50),
             ),
           ),
           Center(

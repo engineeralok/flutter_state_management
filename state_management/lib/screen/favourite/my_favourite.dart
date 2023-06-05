@@ -24,12 +24,12 @@ class _MyFavouriteItemsState extends State<MyFavouriteItems> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => MyFavouriteItems(),
+                    builder: (context) => const MyFavouriteItems(),
                   ));
             },
-            child: Icon(Icons.favorite),
+            child: const Icon(Icons.favorite),
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           )
         ],
@@ -50,7 +50,7 @@ class _MyFavouriteItemsState extends State<MyFavouriteItems> {
                           value.addItem(index);
                         }
                       },
-                      title: Text("Item " + index.toString()),
+                      title: Text("Item $index"),
                       trailing: Icon(value.selectedItem.contains(index)
                           ? Icons.favorite
                           : Icons.favorite_border_outlined),
