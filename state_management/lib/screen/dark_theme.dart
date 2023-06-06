@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../provider/them_changer_provider.dart';
+import '../provider/theme_changer_provider.dart';
 
 class DarkThemeScreen extends StatefulWidget {
   const DarkThemeScreen({super.key});
