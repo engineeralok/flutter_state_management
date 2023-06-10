@@ -26,6 +26,7 @@ class NetworkApiService extends BaseApiServices {
     try {
       Response response = await post(Uri.parse(url), body: data)
           .timeout(const Duration(seconds: 10));
+      responseJson = returnResponse(response);
     } on SocketException {
       throw FetchDataException("No Internet connection");
     }
@@ -45,8 +46,7 @@ class NetworkApiService extends BaseApiServices {
       case 500:
       default:
         throw FetchDataException(
-            "Error accoured while communicating with server: " +
-                response.statusCode.toString());
+            "Error accoured while communicating with server: ${response.statusCode}");
     }
   }
 }
