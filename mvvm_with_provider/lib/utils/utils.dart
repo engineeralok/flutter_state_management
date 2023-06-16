@@ -4,6 +4,12 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:another_flushbar/flushbar.dart';
 
 class Utils {
+  static void feildFocusChange(BuildContext context, FocusNode currentFocusNode,
+      FocusNode nextFocusNode) {
+    currentFocusNode.unfocus();
+    FocusScope.of(context).requestFocus(nextFocusNode);
+  }
+
   static toastMessage(String message) {
     Fluttertoast.showToast(msg: message);
   }
@@ -13,7 +19,7 @@ class Utils {
       context: context,
       flushbar: Flushbar(
         message: message,
-        duration: const Duration(seconds: 2),
+        duration: const Duration(seconds: 3),
         flushbarPosition: FlushbarPosition.TOP,
         backgroundColor: Colors.red,
         forwardAnimationCurve: Curves.decelerate,

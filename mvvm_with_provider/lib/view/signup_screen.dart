@@ -1,21 +1,19 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:mvvm_with_provider/model/user_model.dart';
 import 'package:mvvm_with_provider/res/components/rounded_button.dart';
 import 'package:mvvm_with_provider/utils/routes/routes_name.dart';
-import 'package:mvvm_with_provider/utils/utils.dart';
-import 'package:mvvm_with_provider/view_model/auth_view_model.dart';
-import 'package:mvvm_with_provider/view_model/user_view_model.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+import '../utils/utils.dart';
+import '../view_model/auth_view_model.dart';
+
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -44,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Login"),
+        title: const Text("SignUp"),
         centerTitle: true,
       ),
       body: SafeArea(
@@ -91,9 +89,9 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(height: height * .085),
             RoundedButton(
-              title: "Login",
-              loading: authViewModel.loading,
-              onPress: () async {
+              title: "Sign Up",
+              loading: authViewModel.signupLoading,
+              onPress: () {
                 if (_emailController.text.isEmpty) {
                   Utils.flushBarErrorMessage("Please enter email", context);
                 } else if (_passwordController.text.isEmpty) {
@@ -102,30 +100,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   Utils.flushBarErrorMessage(
                       "Please enter 6 character password", context);
                 } else {
-                  // Map data = {
-                  //   'email': _emailController.text.toString(),
-                  //   'password': _passwordController.text.toString(),
-                  // };
-                  await Future.delayed(const Duration(seconds: 2));
                   Map data = {
-                    'email': "eve.holt@reqres.in",
-                    'password': "cityslicka",
+                    'email': _emailController.text.toString(),
+                    'password': _passwordController.text.toString(),
                   };
-
-                  authViewModel.loginApi(data, context);
-                  // UserViewModel().saveUser(user);
-                  if (kDebugMode) {
-                    print("api hit");
-                  }
+                  authViewModel.signupApi(data, context);
+                  print("api hit");
                 }
               },
             ),
             SizedBox(height: height * .02),
             InkWell(
               onTap: () {
-                Navigator.pushNamed(context, RoutesName.signUp);
+                Navigator.pushNamed(context, RoutesName.login);
               },
-              child: const Text("Dont't have an account? Sign Up"),
+              child: const Text("Already have an account! Login"),
             ),
           ],
         ),
